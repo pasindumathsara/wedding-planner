@@ -36,7 +36,7 @@
                     <div class="content">
                         <h3>Start Planning Your Dream Wedding</h3>
                         <p>Your big day should be unforgettable. Let us help you make every moment perfect, from the flowers to the final kiss.</p>
-                        <a href="about.php" class="btn">learn more</a>
+                        <a href="about.php" class="btn">Discover more</a>
                     </div>
                 </div>
 
@@ -44,7 +44,7 @@
                     <div class="content">
                         <h3>Elegant, Memorable, and Perfect</h3>
                         <p>We design weddings that reflect your love story — stylish, unique, and full of unforgettable memories.</p>
-                        <a href="about.php" class="btn">learn more</a>
+                        <a href="about.php" class="btn">Discover more</a>
                     </div>
                 </div>
 
@@ -52,7 +52,7 @@
                     <div class="content">
                         <h3>Celebrate Love with Confidence</h3>
                         <p>From planning to decoration and coordination, we take care of everything so you can enjoy your big day stress-free.</p>
-                        <a href="about.php" class="btn">learn more</a>
+                        <a href="about.php" class="btn">Discover more</a>
                     </div>
                 </div>
 
