@@ -1,0 +1,435 @@
+:root {
+    --primary: #ff7e9f;
+    --primary-dark: #e86a8a;
+    --secondary: #6c757d;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --success: #28a745;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.checkout-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.checkout-header h1 {
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.checkout-progress {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.checkout-progress:before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #ddd;
+    z-index: 1;
+}
+
+.progress-step {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    z-index: 2;
+}
+
+.progress-step .step-number {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ddd;
+    color: var(--secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.progress-step.active .step-number {
+    background-color: var(--primary);
+    color: white;
+}
+
+.progress-step.completed .step-number {
+    background-color: var(--success);
+    color: white;
+}
+
+.progress-step .step-label {
+    font-size: 14px;
+    color: var(--secondary);
+    transition: color 0.3s, font-weight 0.3s;
+}
+
+.progress-step.active .step-label {
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.progress-step.completed .step-label {
+    color: var(--success);
+    font-weight: bold;
+}
+
+.checkout-container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.checkout-summary {
+    flex: 1 1 350px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-form {
+    flex: 2 1 600px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    color: var(--primary);
+}
+
+.wedding-plan {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
+
+.wedding-plan-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 15px;
+}
+
+.wedding-plan-details {
+    flex: 1;
+}
+
+.wedding-plan-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.wedding-plan-price {
+    color: var(--primary);
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.wedding-plan-features {
+    list-style-type: none;
+    font-size: 14px;
+    color: var(--secondary);
+}
+
+.wedding-plan-features li {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.wedding-plan-features li:before {
+    content: '✓';
+    color: var(--success);
+    margin-right: 5px;
+}
+
+.summary-total {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.summary-total .summary-row {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.payment-methods {
+    margin-bottom: 20px;
+}
+
+.payment-method {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.payment-method:hover {
+    border-color: var(--primary);
+}
+
+.payment-method.active {
+    border-color: var(--primary);
+    background-color: rgba(255, 126, 159, 0.1);
+}
+
+.payment-method input {
+    margin-right: 10px;
+}
+
+.payment-method-icon {
+    width: 40px;
+    margin-right: 10px;
+}
+
+.card-details,
+.paypal-details {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.card-details.active,
+.paypal-details.active {
+    display: block;
+}
+
+.card-icons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.card-icon {
+    width: 40px;
+    height: 25px;
+    object-fit: contain;
+}
+
+.card-element {
+    margin-bottom: 15px;
+    padding: 12px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.paypal-button {
+    background-color: #0070ba;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+    width: 100%;
+}
+
+.btn:hover {
+    background-color: var(--primary-dark);
+}
+
+.btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--secondary);
+    color: var(--secondary);
+    margin-right: 10px;
+}
+
+.btn-outline:hover {
+    background-color: var(--light);
+}
+
+.confirmation-message {
+    text-align: center;
+    padding: 30px;
+    background-color: var(--light);
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.confirmation-icon {
+    margin-bottom: 20px;
+    font-size: 64px;
+    color: var(--success);
+}
+
+.confirmation-message h3 {
+    color: var(--success);
+    margin-bottom: 15px;
+}
+
+.confirmation-message p {
+    margin-bottom: 10px;
+    color: var(--secondary);
+}
+
+.order-summary {
+    margin: 30px auto;
+    max-width: 400px;
+    text-align: left;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.order-summary h4 {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    color: var(--dark);
+}
+
+.order-summary .summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: var(--dark);
+}
+
+#backToHome {
+    margin-top: 20px;
+    background-color: var(--success);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#backToHome:hover {
+    background-color: #218838;
+}
+
+.confirmation {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.confirmation.active {
+    display: block;
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+    .checkout-container {
+        flex-direction: column;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}

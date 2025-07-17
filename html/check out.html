@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wedding Plan Checkout</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="checkout-header">
+      <h1>Complete Your Wedding Plan Purchase</h1>
+      <p>Review your plan and enter your payment details to confirm your booking</p>
+    </div>
+
+    <div class="checkout-progress">
+      <div class="progress-step completed" id="step1">
+        <div class="step-number">1</div>
+        <div class="step-label">Plan Details</div>
+      </div>
+      <div class="progress-step active" id="step2">
+        <div class="step-number">2</div>
+        <div class="step-label">Billing Info</div>
+      </div>
+      <div class="progress-step" id="step3">
+        <div class="step-number">3</div>
+        <div class="step-label">Payment</div>
+      </div>
+      <div class="progress-step" id="step4">
+        <div class="step-number">4</div>
+        <div class="step-label">Confirmation</div>
+      </div>
+    </div>
+
+    <div class="checkout-container">
+      <div class="checkout-summary">
+        <h2 class="section-title">Your Wedding Plan</h2>
+        <div class="wedding-plan">
+          <img src="wedding 1 .avif"
+            alt="Wedding Plan" class="wedding-plan-image" />
+          <div class="wedding-plan-details">
+            <div class="wedding-plan-title">Premium Wedding Package</div>
+            <div class="wedding-plan-price">Rs 100,000</div>
+            <ul class="wedding-plan-features">
+              <li>2 Days Coverage</li>
+              <li>100 Photos</li>
+              <li>Photo Book</li>
+              
+            </ul>
+          </div>
+        </div>
+
+        <div class="summary-total">
+          <div class="summary-row">
+            <span>Subtotal:</span>
+            <span>Rs 100,000</span>
+          </div>
+          
+          <div class="summary-row">
+            <span>Total:</span>
+            <span>Rs 100,000</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="checkout-form">
+        <form id="checkoutForm" action="process_checkout.php" method="POST">
+         
+          <div class="form-section" id="billingSection" style="display: block;">
+            <h2 class="section-title">Billing Information</h2>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName" class="form-label">First Name</label>
+                <input type="text" id="firstName" name="first_name" class="form-control" required />
+              </div>
+              <div class="form-group">
+                <label for="lastName" class="form-label">Last Name</label>
+                <input type="text" id="lastName" name="last_name" class="form-control" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="form-label">Email Address</label>
+              <input type="email" id="email" name="email" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+              <label for="phone" class="form-label">Phone Number</label>
+              <input type="tel" id="phone" name="phone" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+              <label for="address" class="form-label">Street Address</label>
+              <input type="text" id="address" name="address" class="form-control" required />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="city" class="form-label">City</label>
+                <input type="text" id="city" name="city" class="form-control" required />
+              </div>
+              <div class="form-group">
+                <label for="state" class="form-label">State/Province</label>
+                <input type="text" id="state" name="state" class="form-control" required />
+              </div>
+              <div class="form-group">
+                <label for="zip" class="form-label">ZIP/Postal Code</label>
+                <input type="text" id="zip" name="zip" class="form-control" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="country" class="form-label">Country</label>
+              <select id="country" name="country" class="form-control" required>
+                <option value="">Select Country</option>
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+                <option value="UK">United Kingdom</option>
+                <option value="AU">Sri Lanka</option>
+              </select>
+            </div>
+
+            <div class="navigation-buttons">
+              <button type="button" class="btn btn-outline" disabled>Back</button>
+              <button type="button" class="btn" id="nextToPayment">Continue to Payment</button>
+            </div>
+          </div>
+
+          
+          <div class="form-section" id="paymentSection" style="display: none;">
+            <h2 class="section-title">Payment Method</h2>
+
+            <div class="payment-methods">
+              <div class="payment-method active" id="creditCardMethod">
+                <input type="radio" name="payment_method" id="creditCard" value="credit" checked />
+                <img src="https://cdn-icons-png.flaticon.com/512/179/179457.png" alt="Credit Card" class="payment-method-icon" />
+                <label for="creditCard">Credit/Debit Card</label>
+              </div>
+
+              <div class="payment-method" id="paypalMethod">
+                <input type="radio" name="payment_method" id="paypal" value="paypal" />
+                <img src="https://cdn-icons-png.flaticon.com/512/174/174861.png" alt="PayPal" class="payment-method-icon" />
+                <label for="paypal">PayPal</label>
+              </div>
+            </div>
+
+            <div class="card-details active" id="creditCardDetails">
+              <div class="card-icons">
+                <img src="https://cdn-icons-png.flaticon.com/512/196/196578.png" class="card-icon" />
+                <img src="https://cdn-icons-png.flaticon.com/512/196/196561.png" class="card-icon" />
+                <img src="https://cdn-icons-png.flaticon.com/512/196/196565.png" class="card-icon" />
+                <img src="https://cdn-icons-png.flaticon.com/512/196/196566.png" class="card-icon" />
+              </div>
+
+              <div class="form-group">
+                <label for="cardNumber" class="form-label">Card Number</label>
+                <input type="text" id="cardNumber" name="card_number" class="form-control" required />
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="cardExpiry" class="form-label">Expiration Date</label>
+                  <input type="text" id="cardExpiry" name="card_expiry" class="form-control" placeholder="MM/YY" required />
+                </div>
+                <div class="form-group">
+                  <label for="cardCvc" class="form-label">CVC</label>
+                  <input type="text" id="cardCvc" name="card_cvc" class="form-control" placeholder="123" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="cardName" class="form-label">Name on Card</label>
+                <input type="text" id="cardName" name="card_name" class="form-control" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <input type="checkbox" id="termsAgree" required />
+              <label for="termsAgree">I agree to the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a></label>
+            </div>
+
+            <div class="navigation-buttons">
+              <button type="button" class="btn btn-outline" id="backToBilling">Back</button>
+              <button type="submit" class="btn" id="completePurchase">Complete Purchase</button>
+            </div>
+          </div>
+
+         
+          <div class="form-section" id="confirmationSection" style="display: none;">
+            <h2 class="section-title">Order Confirmation</h2>
+            <div class="confirmation-message">
+              <div class="confirmation-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="#28a745">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+              </div>
+              <h3>Thank you for your purchase!</h3>
+              <p>Your order #<span id="orderNumber">WED2023-XXXX</span> has been confirmed.</p>
+              
+              <div class="order-summary">
+                <h4>Order Summary</h4>
+                <div class="summary-row">
+                  <span>Wedding Plan:</span>
+                  <span>Premium Wedding Package</span>
+                </div>
+                <div class="summary-row">
+                  <span>Total:</span>
+                  <span>Rs 100,000</span>
+                </div>
+                <div class="summary-row">
+                  <span>Payment Method:</span>
+                  <span id="paymentMethodSummary">Credit Card ending in 4242</span>
+                </div>
+              </div>
+              <button type="button" class="btn" id="backToHome">Back to Home</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
