@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function () {
       orderData.payment.cardCvc = document.getElementById("cardCvc").value.trim();
     }
 
-    fetch("process_checkout.php", {
+    fetch("../php/process_checkout.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -204,8 +204,44 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("An error occurred while processing your order.");
       });
   });
+  
 
   backToHomeBtn.addEventListener("click", function () {
     alert("Redirecting to home page...");
   });
+
+  // ========== ADDITION: Update summary dynamically from URL parameters ==========
+  (function updatePackageFromURL() {
+   function getQueryParams() {
+  const params = {};
+  window.location.search.substring(1).split("&").forEach(pair => {
+    if (pair) {
+      const [key, val] = pair.split("=");
+      // decodeURIComponent and replace '+' with space
+      params[decodeURIComponent(key)] = decodeURIComponent(val || "").replace(/\+/g, " ");
+    }
+  });
+  return params;
+}
+
+    const params = getQueryParams();
+
+    if (params.title && params.price && params.image) {
+      const titleEl = document.querySelector(".wedding-plan-title");
+      const priceEl = document.querySelector(".wedding-plan-price");
+      const imageEl = document.querySelector(".wedding-plan-image");
+      const subtotalSpan = document.querySelector(".summary-total .summary-row span:nth-child(2)");
+      const totalSpan = subtotalSpan?.parentElement.nextElementSibling?.querySelector("span:nth-child(2)");
+
+      if (titleEl) titleEl.textContent = params.title;
+      if (priceEl) priceEl.textContent = "Rs " + Number(params.price).toLocaleString(undefined, { minimumFractionDigits: 0 });
+      if (imageEl) {
+        imageEl.src = "uploads/" + params.image;
+        imageEl.alt = params.title;
+      }
+      if (subtotalSpan) subtotalSpan.textContent = "Rs " + Number(params.price).toLocaleString(undefined, { minimumFractionDigits: 0 });
+      if (totalSpan) totalSpan.textContent = "Rs " + Number(params.price).toLocaleString(undefined, { minimumFractionDigits: 0 });
+    }
+  })();
+
 });

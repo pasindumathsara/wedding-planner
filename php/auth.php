@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'config.php';
+include 'db.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $action = $_POST['action'];
@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['username'] = $user['username'];
                 echo "<script>
                     alert('✅ Login successful. Welcome, " . $user['username'] . "');
-                    window.location.href = 'dashboard.php';
+                    window.location.href = 'home.php';
                 </script>";
             } else {
                 echo "<script>alert('❌ Invalid username or password.'); window.history.back();</script>";

@@ -11,9 +11,9 @@
       width: 100%; padding: 10px; font-size: 16px; margin-top: 10px; border-radius: 6px; border: 1px solid #ccc;
     }
     button {
-      background: #ee9ca7; color: white; border:none; cursor: pointer;
+      background: #b76e79; color: white; border:none; cursor: pointer;
     }
-    button:hover { background: #e5738c; }
+    button:hover { background: rgba(98, 13, 31, 1); }
   </style>
 </head>
 <body>

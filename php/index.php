@@ -1,4 +1,4 @@
-<?php session_start(); ?> <!-- Start PHP session to manage login state -->
+<?php session_start(); ?> 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +10,7 @@
     <title>Login & Register</title>
 
     <!-- External CSS file for styling -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/login_style.css">
 
     <!-- Boxicons icon library -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>

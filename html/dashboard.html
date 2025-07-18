@@ -24,31 +24,31 @@
 
   <!-- ✅ Nav Bar Overlaid on Slider -->
   <header class="dashboard-header" style="height: 70px;">
-    <div class="logo">💍 Wedding Admin</div>
+    <div class="logo"><a href="../php/home.php" style="color: rgb(40, 40, 40);text-decoration: none;">💍 Wedding Admin</a></div>
     <nav>
-      <ul>
+      <ul style="position: relative; left: -50px;">
         <li><a href="dashboard.html">Dashboard</a></li>
         <li><a href="../php/add_package.php">Add Packages</a></li>
         <li><a href="view_packages.php">View Packages</a></li>
         <li><a href="manage_providers.html">Providers</a></li>
         <li><a href="view_bookings.php">Bookings</a></li>
         <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="logout.php">Logout</a></li>
+        
       </ul>
     </nav>
   </header>
 
   <!-- ✅ Rest of the Page -->
-  <section class="hero-banner">
+  <section class="hero-banner" style="position:relative; top: -500px;left: 50px;">
     <div class="hero-image">
       <div class="hero-text">
-        <h1 style="color: rgb(99, 87, 87);">Welcome to the Wedding Planner Admin Panel</h1>
-        <p style="color: rgb(116, 113, 108);">Manage packages, providers, and customer bookings seamlessly.</p>
+        <h1 style="color: rgb(255, 255, 255);font-family: 'Times New Roman', Times, serif;">Welcome to the Wedding Planner Admin Panel</h1>
+        <p style="color: rgb(255, 255, 255); font-family: 'Times New Roman', Times, serif;">Manage packages, providers, and customer bookings seamlessly.</p>
       </div>
     </div>
   </section>
 
-  <main class="main-cards">
+  <main class="main-cards"style="position:relative; top: -1100px;">
     <div class="card">
       <i class="fas fa-plus"></i>
       <h3>Add Wedding Package</h3>
@@ -67,7 +67,7 @@
       <i class="fas fa-user-tie"></i>
       <h3>Manage Providers</h3>
       <p>Add photographers, decorators, and more.</p>
-      <a href="../php/select_category.php" class="btn">Manage</a>
+      <a href="../php/manage_providers.php" class="btn">Manage</a>
     </div>
 
     <div class="card">
