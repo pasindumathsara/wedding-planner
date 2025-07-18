@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wedding Plan Checkout</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+  .checkout-progress {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0 50px;
+    position: relative;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .checkout-progress::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    right: 40px;
+    height: 4px;
+    background: #d3d3d3;
+    transform: translateY(-50%);
+    z-index: 0;
+    border-radius: 2px;
+  }
+
+  .progress-step {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    text-align: center;
+    cursor: default;
+  }
+
+  .progress-step .step-number {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 auto 10px;
+    font-weight: 600;
+    font-size: 18px;
+    transition: color 0.3s ease;
+    background: none !important;
+    border-radius: 0;
+    box-shadow: none !important;
+    color: #999;
+  }
+
+  .progress-step.active .step-number {
+    color: #2575fc;
+  }
+
+  .progress-step.completed .step-number {
+    color: #28a745;
+  }
+
+  .progress-step .step-label {
+    font-size: 14px;
+    color: #777;
+    font-weight: 500;
+    user-select: none;
+    transition: color 0.3s ease;
+  }
+
+  .progress-step.active .step-label,
+  .progress-step.completed .step-label {
+    color: #2575fc;
+    font-weight: 600;
+  }
+
+  .progress-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: 0;
+    width: 100%;
+    height: 4px;
+    background: #d3d3d3;
+    z-index: 0;
+    margin-left: 20px;
+    margin-right: -50%;
+    transform-origin: left center;
+    transition: background-color 0.3s ease;
+  }
+
+  .progress-step.completed:not(:last-child)::after {
+    background: linear-gradient(135deg, #ed5f01 0%, #ff820c 100%);
+    box-shadow: 0 0 8px rgba(255, 174, 0, 0.6);
+  }
+
+  .progress-step .step-label {
+    display: none;
+  }
+</style>
+
+</head>
+<body>
+  <div class="container">
+    <div class="checkout-header">
+      <h1>Complete Your Wedding Plan Purchase</h1>
+      <p>Review your plan and enter your payment details to confirm your booking</p>
+    </div>
+
+    <div class="checkout-progress">
+      <div class="progress-step completed" id="step1">
+        <div class="step-number">1</div>
+        <div class="step-label">Plan Details</div>
+      </div>
+      <div class="progress-step active" id="step2">
+        <div class="step-number">2</div>
+        <div class="step-label">Billing Info</div>
+      </div>
+      <div class="progress-step" id="step3">
+        <div class="step-number">3</div>
+        <div class="step-label">Payment</div>
+      </div>
+      <div class="progress-step" id="step4">
+        <div class="step-number">4</div>
+        <div class="step-label">Confirmation</div>
+      </div>
+    </div>
+
+    <div class="checkout-container">
+      <div class="checkout-summary">
+        <h2 class="section-title">Your Wedding Plan</h2>
+        <div class="wedding-plan">
+          <img src="uploads/wedding1.avif"
+            alt="Wedding Plan" class="wedding-plan-image" />
+          <div class="wedding-plan-details">
+            <div class="wedding-plan-title">Premium Wedding Package</div>
+            <div class="wedding-plan-price">Rs 100,000</div>
+            <ul class="wedding-plan-features">
+              <li>2 Days Coverage</li>
+              <li>100 Photos</li>
+              <li>Photo Book</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="summary-total">
+          <div class="summary-row">
+            <span>Subtotal:</span>
+            <span>Rs 699,999.99</span>
+          </div>
+          <div class="summary-row">
+            <span>Total:</span>
+            <span>Rs 699,999.99</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="checkout-form">
+        <form id="checkoutForm">
+          <div class="form-section" id="billingSection" style="display: block;">
+            <!-- billing fields -->
+            <h2 class="section-title">Billing Information</h2>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName" class="form-label">First Name</label>
+                <input type="text" id="firstName" name="first_name" class="form-control" required />
+              </div>
+              <div class="form-group">
+                <label for="lastName" class="form-label">Last Name</label>
+                <input type="text" id="lastName" name="last_name" class="form-control" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email" class="form-label">Email Address</label>
+              <input type="email" id="email" name="email" class="form-control" required />
+            </div>
+            <div class="form-group">
+              <label for="phone" class="form-label">Phone Number</label>
+              <input type="tel" id="phone" name="phone" class="form-control" required />
+            </div>
+            <div class="form-group">
+              <label for="address" class="form-label">Street Address</label>
+              <input type="text" id="address" name="address" class="form-control" required />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="city" class="form-label">City</label>
+                <input type="text" id="city" name="city" class="form-control" required />
+              </div>
+              <div class="form-group">
+                <label for="state" class="form-label">State/Province</label>
+                <input type="text" id="state" name="state" class="form-control" required />
+              </div>
+              <div class="form-group">
+                <label for="zip" class="form-label">ZIP/Postal Code</label>
+                <input type="text" id="zip" name="zip" class="form-control" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="country" class="form-label">Country</label>
+              <select id="country" name="country" class="form-control" required>
+                <option value="">Select Country</option>
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+                <option value="UK">United Kingdom</option>
+                <option value="AU">Sri Lanka</option>
+              </select>
+            </div>
+            <div class="navigation-buttons">
+              <button type="button" class="btn btn-outline" disabled>Back</button>
+              <button type="button" class="btn" id="nextToPayment">Continue to Payment</button>
+            </div>
+          </div>
+
+          <div class="form-section" id="paymentSection" style="display: none;">
+            <!-- Payment fields added here -->
+            <h2 class="section-title">Payment Information</h2>
+
+            <div class="form-group">
+              <label>Payment Method</label>
+              <div>
+                <label><input type="radio" name="payment_method" value="credit" required /> Credit Card</label>
+                <label><input type="radio" name="payment_method" value="paypal" /> PayPal</label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="cardName" class="form-label">Name on Card</label>
+              <input type="text" id="cardName" name="cardName" class="form-control" />
+            </div>
+
+            <div class="form-group">
+              <label for="cardNumber" class="form-label">Card Number</label>
+              <input type="text" id="cardNumber" name="cardNumber" class="form-control" />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group" style="flex:1; margin-right:10px;">
+                <label for="cardExpiry" class="form-label">Expiry Date (MM/YY)</label>
+                <input type="text" id="cardExpiry" name="cardExpiry" class="form-control" />
+              </div>
+              <div class="form-group" style="flex:1;">
+                <label for="cardCvc" class="form-label">CVC</label>
+                <input type="text" id="cardCvc" name="cardCvc" class="form-control" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <input type="checkbox" id="termsAgree" required />
+              <label for="termsAgree">I agree to the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a></label>
+            </div>
+            <div class="navigation-buttons">
+              <button type="button" class="btn btn-outline" id="backToBilling">Back</button>
+              <button type="submit" class="btn" id="completePurchase">Complete Purchase</button>
+            </div>
+          </div>
+
+          <div class="form-section" id="confirmationSection" style="display: none;">
+            <!-- confirmation section -->
+            <h2 class="section-title">Order Confirmation</h2>
+            <p>Thank you for your purchase! Your order number is <span id="orderNumber"></span>.</p>
+            <p>Payment Method: <span id="paymentMethodSummary"></span></p>
+            <button type="button" id="backToHome" class="btn">Back to Home</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const urlParams = new URLSearchParams(window.location.search);
+  const title = urlParams.get('title');
+  const price = urlParams.get('price');
+  const image = urlParams.get('image');
+
+  if (title && price && image) {
+    document.querySelector('.wedding-plan-title').textContent = decodeURIComponent(title);
+    document.querySelector('.wedding-plan-price').textContent = `Rs ${decodeURIComponent(price)}`;
+    document.querySelector('.wedding-plan-image').src = `../uploads/${decodeURIComponent(image)}`;
+
+    const confirmationSection = document.getElementById('confirmationSection');
+    if (confirmationSection) {
+      const rows = confirmationSection.querySelectorAll('.summary-row');
+      if (rows.length >= 2) {
+        rows[1].querySelector('span:last-child').textContent = `Rs ${decodeURIComponent(price)}`;
+        rows[0].querySelector('span:last-child').textContent = decodeURIComponent(title);
+      }
+    }
+  }
+
+  // Move to Payment section
+  document.getElementById('nextToPayment').addEventListener('click', function () {
+    document.getElementById('billingSection').style.display = 'none';
+    document.getElementById('paymentSection').style.display = 'block';
+
+    document.getElementById('step2').classList.remove('active');
+    document.getElementById('step2').classList.add('completed');
+    document.getElementById('step3').classList.add('active');
+  });
+
+  // Back to Billing section
+  document.getElementById('backToBilling').addEventListener('click', function () {
+    document.getElementById('paymentSection').style.display = 'none';
+    document.getElementById('billingSection').style.display = 'block';
+
+    document.getElementById('step3').classList.remove('active');
+    document.getElementById('step2').classList.remove('completed');
+    document.getElementById('step2').classList.add('active');
+  });
+
+  // Form submission
+  document.getElementById('checkoutForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    if (!document.getElementById('termsAgree').checked) {
+      alert("Please agree to the Terms and Conditions and Privacy Policy.");
+      return;
+    }
+
+    const billing = {
+      firstName: document.getElementById('firstName').value,
+      lastName: document.getElementById('lastName').value,
+      email: document.getElementById('email').value,
+      phone: document.getElementById('phone').value,
+      address: document.getElementById('address').value,
+      city: document.getElementById('city').value,
+      state: document.getElementById('state').value,
+      zip: document.getElementById('zip').value,
+      country: document.getElementById('country').value
+    };
+
+    const payment = {
+      method: document.querySelector('input[name="payment_method"]:checked')?.value || '',
+      cardNumber: document.getElementById('cardNumber')?.value || '',
+      cardExpiry: document.getElementById('cardExpiry')?.value || '',
+      cardCvc: document.getElementById('cardCvc')?.value || '',
+      cardName: document.getElementById('cardName')?.value || ''
+    };
+
+    const packageInfo = {
+      total: 100000
+    };
+
+    try {
+      const res = await fetch('../php/process_checkout.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ billing, payment, package: packageInfo })
+      });
+
+      const result = await res.json();
+
+      if (result.success) {
+        alert("Order placed successfully!");
+        document.getElementById("paymentSection").style.display = "none";
+        document.getElementById("confirmationSection").style.display = "block";
+
+        document.getElementById("orderNumber").textContent = "WED2023-" + result.orderId;
+
+        let pmSummary = payment.method === 'credit'
+          ? `Credit Card ending in ${payment.cardNumber.slice(-4)}`
+          : "PayPal";
+
+        document.getElementById("paymentMethodSummary").textContent = pmSummary;
+
+        document.getElementById('step3').classList.remove('active');
+        document.getElementById('step3').classList.add('completed');
+        document.getElementById('step4').classList.add('active');
+      } else {
+        alert("Order failed: " + result.message);
+      }
+    } catch (err) {
+      alert("An error occurred while placing the order.");
+      console.error(err);
+    }
+  });
+
+  document.getElementById('backToHome').addEventListener('click', () => {
+    window.location.href = '../php/home.php';
+  });
+});
+</script>
+</body>
+</html>
